@@ -1,0 +1,18 @@
+general_settings:
+  pass_through_endpoints:
+    - path: "/phala"
+      target: "http://phala-pap:4180"
+      include_subpath: true
+      headers:
+        Authorization: "bearer os.environ/PHALA_API_KEY"
+  master_key: os.environ/LITELLM_MASTER_KEY
+  # Suppress proxy range startup warnings
+  trusted_proxy_ranges: [] 
+
+model_list:
+  - model_name: gemini-3.1-flash-image
+    litellm_params:
+      model: openrouter/google/gemini-3.1-flash-image
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      # drop_params is needed for Open WebUI image edit support
+      drop_params: true 

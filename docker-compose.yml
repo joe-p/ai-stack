@@ -1,0 +1,33 @@
+services:
+  openwebui:
+    # version: ^0\.\d+\.\d+$
+    image: ghcr.io/open-webui/open-webui:0.12.5@sha256:03443b8de6b617da9d900edd09b4bf1cb0ddbfdcba6afb42c548336a0b821ded
+    ports:
+      - "3005:8080"
+    volumes:
+      - ./volumes/open-webui:/app/backend/data
+    environment:
+      WEBUI_AUTH: False
+      # Tells Open WebUI where to fetch its own uploaded assets internally
+      WEBUI_URL: "http://127.0.0.1:8080"
+      # Bypasses the internal network block so it can resolve /api/v1/files/...
+      ENABLE_RAG_LOCAL_WEB_FETCH: "True"
+  litellm:
+    # version: ^v1\.\d+\.\d+$
+    image: litellm/litellm:v1.106.6@sha256:37e2dafb088a7723beb998590682957386dfc83ffea1848486f8e0e5cfac0b06
+    env_file:
+      - .env
+    ports:
+      - 4000:4000
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml # Mount the local configuration file
+    command: [ "--config", "/app/config.yaml", "--port", "4000" ]
+  phala-pap:
+    ports:
+      - 4180:4180
+    command: ["https://inference.phala.com", "--client-host", "phala-pap"]
+    build:
+      context: .
+      dockerfile: images/pap.Dockerfile
+      args:
+        VERSION: 0.7.0
