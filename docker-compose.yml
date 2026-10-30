@@ -1,3 +1,6 @@
+volumes:
+  litellm-pgdata:
+
 services:
   openwebui:
     # version: ^0\.\d+\.\d+$
@@ -15,13 +18,41 @@ services:
   litellm:
     # version: ^v1\.\d+\.\d+$
     image: litellm/litellm:v1.106.6@sha256:37e2dafb088a7723beb998590682957386dfc83ffea1848486f8e0e5cfac0b06
-    env_file:
-      - .env
+    environment:
+      LITELLM_MODE: PRODUCTION
+      DATABASE_URL: postgresql://litellm:${LITELLM_POSTGRES_PASSWORD:?required}@litellm-postgres:5432/litellm
+      LITELLM_SALT_KEY: ${LITELLM_SALT_KEY:?required}
+      LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY:?required}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:?required}
+      PHALA_API_KEY: ${PHALA_API_KEY:?required}
     ports:
       - 4000:4000
     volumes:
       - ./litellm-config.yaml:/app/config.yaml # Mount the local configuration file
     command: [ "--config", "/app/config.yaml", "--port", "4000" ]
+    depends_on:
+      litellm-postgres:
+        condition: service_healthy
+  litellm-postgres:
+    image: postgres:16-alpine
+    container_name: litellm-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: ${LITELLM_POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: litellm
+      # deterministic initdb; avoids locale surprises on fresh volumes
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    volumes:
+      - litellm-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm -d litellm"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    expose:
+      - "5432"
   phala-pap:
     ports:
       - 4180:4180
@@ -31,3 +62,4 @@ services:
       dockerfile: images/pap.Dockerfile
       args:
         VERSION: 0.7.0
+  
