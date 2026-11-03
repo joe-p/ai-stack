@@ -21,3 +21,21 @@ model_list:
       api_key: "os.environ/OPENROUTER_API_KEY"
       # drop_params is needed for Open WebUI image edit support
       drop_params: true 
+  - model_name: deepseek/deepseek-v4.1-flash-1017 
+    litellm_params:
+      model: openrouter/deepseek/deepseek-v4.1-flash-1017
+      api_key: os.environ/OPENROUTER_API_KEY
+      extra_body:
+        provider:
+          order: ["relace/fp4", "wafer/mxfp4", "modelrun/fp4"] 
+          allow_fallbacks: false
+          zdr: true
+          data_collection: "deny"
+  - model_name: deepseek/deepseek-v4.1-flash-1017:phala
+    litellm_params:
+      model: deepseek/deepseek-v4.1-flash-1017
+      api_base: http://phala-pap:4180 
+      api_key: bearer os.environ/PHALA_API_KEY
+    model_info:
+      mode: chat
+
