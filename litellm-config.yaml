@@ -9,6 +9,24 @@ general_settings:
   store_prompts_in_spend_logs: true
 
 model_list:
+  - model_name: chatgpt/gpt-6.1-sol
+    model_info:
+      mode: responses
+    litellm_params:
+      model: chatgpt/gpt-6.1-sol
+
+  - model_name: chatgpt/gpt-6.1-terra
+    model_info:
+      mode: responses
+    litellm_params:
+      model: chatgpt/gpt-6.1-terra
+
+  - model_name: chatgpt/gpt-6-luna
+    model_info:
+      mode: responses
+    litellm_params:
+      model: chatgpt/gpt-6-luna
+
   - model_name: openrouter/google/gemini-3.1-flash-image
     litellm_params:
       model: openrouter/google/gemini-3.1-flash-image

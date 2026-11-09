@@ -1,5 +1,6 @@
 volumes:
   litellm-pgdata:
+  litellm-chatgpt:
 
 services:
   openwebui:
@@ -25,11 +26,13 @@ services:
       LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY:?required}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:?required}
       PHALA_API_KEY: ${PHALA_API_KEY:?required}
+      CHATGPT_TOKEN_DIR: /data/litellm/chatgpt
     ports:
       - 4000:4000
     volumes:
       - ./litellm-config.yaml:/app/config.yaml # Mount the local configuration file
       - ./providers.json:/app/.venv/lib/python3.13/site-packages/litellm/llms/openai_like/providers.json:ro
+      - litellm-chatgpt:/data/litellm/chatgpt
     command: [ "--config", "/app/config.yaml", "--port", "4000" ]
     depends_on:
       litellm-postgres:
@@ -63,4 +66,4 @@ services:
       dockerfile: images/pap.Dockerfile
       args:
         VERSION: 0.8.4
-  
+
