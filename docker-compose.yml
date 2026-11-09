@@ -4,7 +4,7 @@ volumes:
 services:
   openwebui:
     # version: ^0\.\d+\.\d+$
-    image: ghcr.io/open-webui/open-webui:0.13.0@sha256:2272b0fb7c8783a016bcc179abb467cfa34590c99c5e6560fe0e9155b4820a09
+    image: ghcr.io/open-webui/open-webui:0.13.3@sha256:46b59158e6558eeb980bc828e0f1b30238ad24d82ed84d5e5eda1dab2a082f14
     ports:
       - "3005:8080"
     volumes:
@@ -17,7 +17,7 @@ services:
       ENABLE_RAG_LOCAL_WEB_FETCH: "True"
   litellm:
     # version: ^v1\.\d+\.\d+$
-    image: litellm/litellm:v1.108.1@sha256:562251f032a0075a5e5a775b8f44aa9f9f1e93d16562892565f29bfa23fbf2f6
+    image: litellm/litellm:v1.108.3@sha256:f14d0a035d84d1a8bc98538faf5999e456641fd4cfa191822fd4be1934c1f4f6
     environment:
       LITELLM_MODE: PRODUCTION
       DATABASE_URL: postgresql://litellm:${LITELLM_POSTGRES_PASSWORD:?required}@litellm-postgres:5432/litellm
