@@ -15,14 +15,14 @@ general_settings:
   disable_error_logs: True              # keep provider errors out of spend logs
 
 model_list:
-  - model_name: gemini-3.1-flash-image
+  - model_name: openrouter/google/gemini-3.1-flash-image
     litellm_params:
       model: openrouter/google/gemini-3.1-flash-image
       api_key: "os.environ/OPENROUTER_API_KEY"
       # drop_params is needed for Open WebUI image edit support
       drop_params: true 
 
-  - model_name: deepseek/deepseek-v4.1-flash-1017 
+  - model_name: openrouter/deepseek/deepseek-v4.1-flash-1017 
     litellm_params:
       model: openrouter/deepseek/deepseek-v4.1-flash-1017
       api_key: os.environ/OPENROUTER_API_KEY
@@ -39,7 +39,7 @@ model_list:
       supports_function_calling: true
       supports_reasoning: true
 
-  - model_name: deepseek/deepseek-v4.1-flash-1017:phala
+  - model_name: phala/deepseek/deepseek-v4.1-flash-1017
     litellm_params:
       model: openai/deepseek/deepseek-v4.1-flash-1017
       api_base: http://phala-pap:4180/v1/ 
