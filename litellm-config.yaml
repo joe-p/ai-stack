@@ -41,9 +41,9 @@ model_list:
 
   - model_name: deepseek/deepseek-v4.1-flash-1017:phala
     litellm_params:
-      model: deepseek/deepseek-v4.1-flash-1017
-      api_base: http://phala-pap:4180 
-      api_key: bearer os.environ/PHALA_API_KEY
+      model: openai/deepseek/deepseek-v4.1-flash-1017
+      api_base: http://phala-pap:4180/v1/ 
+      api_key: os.environ/PHALA_API_KEY
     model_info:
       max_input_tokens: 1048576
       max_output_tokens: 393216
