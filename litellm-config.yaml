@@ -9,6 +9,81 @@ general_settings:
   store_prompts_in_spend_logs: true
 
 model_list:
+  - model_name: claude-fable-5-2
+    litellm_params:
+      model: anthropic/claude-fable-5-2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      output_cost_per_reasoning_token: 0
+      cache_read_input_token_cost: 0
+      cache_creation_input_token_cost: 0
+      cache_creation_input_token_cost_above_1hr: 0
+      # 1M-context tier variants
+      input_cost_per_token_above_200k_tokens: 0
+      output_cost_per_token_above_200k_tokens: 0
+      cache_read_input_token_cost_above_200k_tokens: 0
+      cache_creation_input_token_cost_above_200k_tokens: 0
+
+  - model_name: claude-fable-5-1
+    litellm_params:
+      model: anthropic/claude-fable-5-1
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      input_cost_per_token_cache_hit: 0
+      cache_read_input_token_cost: 0
+      output_cost_per_reasoning_token: 0
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      output_cost_per_reasoning_token: 0
+      cache_read_input_token_cost: 0
+      cache_creation_input_token_cost: 0
+      cache_creation_input_token_cost_above_1hr: 0
+      # 1M-context tier variants
+      input_cost_per_token_above_200k_tokens: 0
+      output_cost_per_token_above_200k_tokens: 0
+      cache_read_input_token_cost_above_200k_tokens: 0
+      cache_creation_input_token_cost_above_200k_tokens: 0
+
+
+  - model_name: claude-opus-5-5
+    litellm_params:
+      model: anthropic/claude-opus-5-5
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      input_cost_per_token_cache_hit: 0
+      cache_read_input_token_cost: 0
+      output_cost_per_reasoning_token: 0
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      output_cost_per_reasoning_token: 0
+      cache_read_input_token_cost: 0
+      cache_creation_input_token_cost: 0
+      cache_creation_input_token_cost_above_1hr: 0
+      # 1M-context tier variants
+      input_cost_per_token_above_200k_tokens: 0
+      output_cost_per_token_above_200k_tokens: 0
+      cache_read_input_token_cost_above_200k_tokens: 0
+      cache_creation_input_token_cost_above_200k_tokens: 0
+
+  - model_name: claude-haiku-5-5
+    litellm_params:
+      model: anthropic/claude-haiku-5-5
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      output_cost_per_reasoning_token: 0
+      cache_read_input_token_cost: 0
+      cache_creation_input_token_cost: 0
+      cache_creation_input_token_cost_above_1hr: 0
+      # 1M-context tier variants
+      input_cost_per_token_above_200k_tokens: 0
+      output_cost_per_token_above_200k_tokens: 0
+      cache_read_input_token_cost_above_200k_tokens: 0
+      cache_creation_input_token_cost_above_200k_tokens: 0
+
   - model_name: chatgpt/gpt-6.1-sol
     model_info:
       mode: responses
