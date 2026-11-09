@@ -1,0 +1,6 @@
+{
+  "phala": {
+    "base_url": "http://phala-pap:4180/v1",
+    "api_key_env": "PHALA_API_KEY"
+  }
+}
