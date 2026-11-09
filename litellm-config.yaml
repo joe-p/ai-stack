@@ -1,18 +1,12 @@
 general_settings:
-  pass_through_endpoints:
-    - path: "/phala"
-      auth: true
-      target: "http://phala-pap:4180"
-      include_subpath: true
-      headers:
-        Authorization: "bearer os.environ/PHALA_API_KEY"
   database_url: "os.environ/DATABASE_URL"
   # Suppress proxy range startup warnings
   trusted_proxy_ranges: []
   proxy_config_reload_interval_seconds: 30
   database_connection_pool_limit: 10    # per worker process
   proxy_batch_write_at: 60              # batch spend writes, avoids DB hot spot
-  disable_error_logs: True              # keep provider errors out of spend logs
+  store_model_in_db: true
+  store_prompts_in_spend_logs: true
 
 model_list:
   - model_name: openrouter/google/gemini-3.1-flash-image
