@@ -2,9 +2,6 @@ general_settings:
   database_url: "os.environ/DATABASE_URL"
   # Suppress proxy range startup warnings
   trusted_proxy_ranges: []
-  proxy_config_reload_interval_seconds: 30
-  database_connection_pool_limit: 10    # per worker process
-  proxy_batch_write_at: 60              # batch spend writes, avoids DB hot spot
   store_model_in_db: true
   store_prompts_in_spend_logs: true
 
