@@ -1,0 +1,76 @@
+{
+  "server": {
+    "listen": "0.0.0.0:8080",
+    "max_body_bytes": 1048576,
+    "read_header_timeout": "10s",
+    "shutdown_timeout": "15s"
+  },
+  "logging": {
+    "format": "json",
+    "level": "info",
+    "log_usage": true,
+    "access_sink": {
+      "url": "http://model-proxy-dashboard:8787/ingest"
+    }
+  },
+  "auth": {
+    "enabled": true
+  },
+  "pricing": {
+    "source": "models.dev",
+    "cache": "/tmp/model-proxy/models.dev.json",
+    "refresh_interval": "1h",
+    "timeout": "30s"
+  },
+  "virtual_keys": [
+    {
+      "name": "test_key",
+      "key_env": "PROXY_KEY_TEST"
+    }
+  ],
+  "providers": {
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "dial_timeout": "10s",
+      "response_header_timeout": "120s"
+    },
+    "codex": {
+      "type": "codex",
+      "base_url": "https://chatgpt.com/backend-api/codex",
+      "auth_dir": "/data/codex",
+      "billing_mode": "subscription",
+      "pricing_provider": "openai",
+      "passthrough_models": true
+    },
+    "phala": {
+      "type": "openai-compatible",
+      "base_url": "http://phala-pap:4180/v1",
+      "api_key_env": "PHALA_API_KEY",
+      "dial_timeout": "10s",
+      "response_header_timeout": "120s",
+      "extra_body": {
+        "provider": {
+          "aci_verified": true,
+          "zdr": true
+        }
+      }
+    }
+  },
+  "models": {
+    "openrouter/deepseek/deepseek-v4.1-flash-1017": {
+      "provider": "openrouter",
+      "upstream": "deepseek/deepseek-v4.1-flash-1017",
+      "extra_body": {
+        "order": ["wafer/mxfp4", "together", "inference-net/fp8"],
+        "allow_fallbacks": false,
+        "zdr": true,
+        "data_collection": "deny"
+      }
+    },
+    "phala/deepseek/deepseek-v4.1-flash-1017": {
+      "provider": "phala",
+      "upstream": "deepseek/deepseek-v4.1-flash-1017"
+    }
+  }
+}

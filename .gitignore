@@ -1,3 +1,5 @@
 volumes/
-.env
+*.env
 node_modules/
+codex/
+

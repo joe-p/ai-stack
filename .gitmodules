@@ -1,0 +1,3 @@
+[submodule "model-proxy"]
+	path = model-proxy
+	url = https://github.com/joe-p/model-proxy
