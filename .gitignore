@@ -2,4 +2,5 @@ volumes/
 .env*
 node_modules/
 codex/
+model-proxy-keys.json
 

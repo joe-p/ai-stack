@@ -12,6 +12,7 @@ services:
       - .env.model-proxy
     volumes:
       - ./model-proxy.json:/etc/model-proxy/config.json:ro
+      - ./model-proxy-keys.json:/data/model-proxy-keys.json:ro
       - ./codex:/data/codex
     ports:
       - "8080:8080"

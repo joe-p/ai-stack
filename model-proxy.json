@@ -22,12 +22,7 @@
     "refresh_interval": "1h",
     "timeout": "30s"
   },
-  "virtual_keys": [
-    {
-      "name": "pi_lima_dev",
-      "key_env": "VK_PI_LIMA_DEV"
-    }
-  ],
+  "key_file": "/data/model-proxy-keys.json",
   "providers": {
     "openrouter": {
       "base_url": "https://openrouter.ai/api/v1",
