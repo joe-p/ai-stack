@@ -33,7 +33,14 @@
       "base_url": "https://openrouter.ai/api/v1",
       "api_key_env": "OPENROUTER_API_KEY",
       "dial_timeout": "10s",
-      "response_header_timeout": "120s"
+      "response_header_timeout": "120s",
+      "passthrough_models": true,
+      "extra_body": {
+        "provider": {
+          "zdr": true,
+          "data_collection": "deny"
+        }
+      }
     },
     "codex": {
       "type": "codex",
@@ -49,6 +56,7 @@
       "api_key_env": "PHALA_API_KEY",
       "dial_timeout": "10s",
       "response_header_timeout": "120s",
+      "passthrough_models": true,
       "extra_body": {
         "provider": {
           "aci_verified": true,
@@ -67,10 +75,6 @@
         "zdr": true,
         "data_collection": "deny"
       }
-    },
-    "phala/deepseek/deepseek-v4.1-flash-1017": {
-      "provider": "phala",
-      "upstream": "deepseek/deepseek-v4.1-flash-1017"
     }
   }
 }
