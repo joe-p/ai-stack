@@ -9,7 +9,7 @@ services:
       context: ./model-proxy/
     restart: unless-stopped
     env_file:
-      - .model-proxy.env
+      - .env.model-proxy
     volumes:
       - ./model-proxy.json:/etc/model-proxy/config.json:ro
       - ./codex:/data/codex

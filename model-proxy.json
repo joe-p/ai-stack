@@ -24,8 +24,8 @@
   },
   "virtual_keys": [
     {
-      "name": "test_key",
-      "key_env": "PROXY_KEY_TEST"
+      "name": "pi_lima_dev",
+      "key_env": "VK_PI_LIMA_DEV"
     }
   ],
   "providers": {
@@ -70,7 +70,11 @@
       "provider": "openrouter",
       "upstream": "deepseek/deepseek-v4.1-flash-1017",
       "extra_body": {
-        "order": ["wafer/mxfp4", "together", "inference-net/fp8"],
+        "order": [
+          "wafer/mxfp4",
+          "together",
+          "inference-net/fp8"
+        ],
         "allow_fallbacks": false,
         "zdr": true,
         "data_collection": "deny"
