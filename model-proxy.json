@@ -69,7 +69,7 @@
       "upstream": "deepseek/deepseek-v4.1-flash-1017",
       "extra_body": {
         "provider": {
-          "order": ["wafer/mxfp4", "together", "inference-net/fp8"],
+          "order": ["together", "wafer/mxfp4", "inference-net/fp8"],
           "allow_fallbacks": false,
           "zdr": true,
           "data_collection": "deny"
